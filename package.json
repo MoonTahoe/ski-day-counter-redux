@@ -1,6 +1,6 @@
 {
   "name": "ski-day-counter-redux",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A redux version of Eve Porcello's ski day counter.",
   "main": "./dist",
   "scripts": {
