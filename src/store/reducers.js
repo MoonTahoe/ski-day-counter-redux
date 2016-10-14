@@ -1,8 +1,8 @@
 import C from '../constants'
 
-export const goal = (state=10, action) => {
+export const goal = (state = 10, action) => {
 
-    switch(action.type) {
+    switch (action.type) {
 
         case C.SET_GOAL :
             return action.payload
@@ -13,7 +13,7 @@ export const goal = (state=10, action) => {
 
 }
 
-export const skiDay = (state={}, action) => {
+export const skiDay = (state = {}, action) => {
 
     switch (action.type) {
 
@@ -27,17 +27,20 @@ export const skiDay = (state={}, action) => {
 
 }
 
-const sortByDate = (a, b) => new Date(b.date) - new Date(a.date)
-
-export const allSkiDays = (state=[], action) => {
+export const allSkiDays = (state = [], action) => {
 
     switch (action.type) {
 
         case C.ADD_DAY :
-            return [
-                ...state,
-                skiDay(null, action)
-            ].sort(sortByDate)
+
+            return (state.some((day) => day.date === action.payload.date)) ?
+                state :
+                [
+                    ...state,
+                    skiDay(null, action)
+                ].sort(
+                    (a, b) => new Date(b.date) - new Date(a.date)
+                )
 
         case C.REMOVE_DAY:
             return state.filter(({date}) => date !== action.payload)
@@ -48,9 +51,9 @@ export const allSkiDays = (state=[], action) => {
     }
 }
 
-export const errors = (state=[], action) => {
+export const errors = (state = [], action) => {
 
-    switch(action.type) {
+    switch (action.type) {
 
         case C.ADD_ERROR :
             return [
