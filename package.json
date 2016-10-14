@@ -1,0 +1,27 @@
+{
+  "name": "ski-day-counter-redux",
+  "version": "0.1.3",
+  "description": "A redux version of Eve Porcello's ski day counter.",
+  "main": "./dist",
+  "scripts": {
+    "test": "echo 'todo: setup JEST testing'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoonTahoe/ski-day-counter-redux.git"
+  },
+  "keywords": [
+    "activity",
+    "counter",
+    "ski",
+    "day",
+    "tutorial",
+    "redux"
+  ],
+  "author": "Alex Banks <alex@moonhighway.com> (http://www.moonhighway.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MoonTahoe/ski-day-counter-redux/issues"
+  },
+  "homepage": "https://github.com/MoonTahoe/ski-day-counter-redux#readme"
+}
