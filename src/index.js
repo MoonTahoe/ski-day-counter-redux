@@ -1,62 +1,58 @@
 import C from './constants'
-import { skiDay, errors } from './store/reducers'
+import { allSkiDays } from './store/reducers'
 
-const action_addError = {
-    type: C.ADD_ERROR,
-    payload: "Cannot connect to server"
-}
-
-const action_clearError = {
-    type: C.CLEAR_ERROR,
-    payload: 1
-}
-
-const state = [
-    "user not authorized",
-    "server feed not found"
-]
-
-let nextState = errors(state, action_addError)
-
-console.log(`
-
-    Initially there are ${state.length} errors
-    action: ${JSON.stringify(action_addError)}
-    now there are ${nextState.length} errors:
-        ${nextState.join('\n        ')}
-`)
-
-nextState = errors(nextState, action_clearError)
-
-console.log(`
-    action: ${JSON.stringify(action_clearError)}
-    now there are ${nextState.length} errors:
-        ${nextState.join('\n        ')}
-
-`)
-
-/*
-const action = {
+const action_addDay = {
     type: C.ADD_DAY,
     payload: {
-        "resort": "Heavenly",
-        "date": "2016-12-16",
+        "resort": "Boreal Mountain",
+        "date": "2016-10-28",
         "powder": true,
-        "backcountry": false
+        "backcountry": true
     }
 }
 
-const state = null
+const action_removeDay = {
+    type: C.REMOVE_DAY,
+    payload: "2016-12-16"
+}
 
-const nextState = skiDay(state, action)
+const state = [
+    {
+        "resort": "Kirkwood",
+        "date": "2016-12-16",
+        "powder": true,
+        "backcountry": false
+    },
+    {
+        "resort": "Castle Peak",
+        "date": "2016-02-14",
+        "powder": true,
+        "backcountry": true
+    },
+    {
+        "resort": "Squaw Valley",
+        "date": "2016-03-12",
+        "powder": false,
+        "backcountry": false
+    }
+]
+
+nextState = allSkiDays(state, action_addDay)
 
 console.log(`
 
-    initial ski day is empty: ${state}
-
-    action: ${JSON.stringify(action)}
-
-    new ski day: ${JSON.stringify(nextState)}
+    Initially there are ${state.length} days
+    action: ${JSON.stringify(action_addDay)}
+    now there are ${nextState.length} days:
+        ${nextState.map(day => day.resort).join('\n        ')}
 
 `)
-*/
+
+let nextState = allSkiDays(nextState, action_removeDay)
+
+console.log(`
+    action: ${JSON.stringify(action_removeDay)}
+    now there are ${nextState.length} days:
+        ${nextState.map(day => day.resort).join('\n        ')}
+
+`)

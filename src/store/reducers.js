@@ -27,6 +27,27 @@ export const skiDay = (state={}, action) => {
 
 }
 
+const sortByDate = (a, b) => new Date(b.date) - new Date(a.date)
+
+export const allSkiDays = (state=[], action) => {
+
+    switch (action.type) {
+
+        case C.ADD_DAY :
+            return [
+                ...state,
+                skiDay(null, action)
+            ].sort(sortByDate)
+
+        case C.REMOVE_DAY:
+            return state.filter(({date}) => date !== action.payload)
+
+        default:
+            return state
+
+    }
+}
+
 export const errors = (state=[], action) => {
 
     switch(action.type) {
