@@ -1,4 +1,5 @@
 import C from '../constants'
+import { combineReducers } from 'redux'
 
 export const goal = (state = 10, action) => {
 
@@ -116,3 +117,13 @@ export const cache = (state = {}, action) => {
 
 }
 
+export default combineReducers({
+    allSkiDays,
+    goal,
+    errors,
+    resortNames: combineReducers({
+        fetching,
+        cache,
+        suggestions
+    })
+})
