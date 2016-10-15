@@ -15,7 +15,7 @@ Versions
 * ([v2.5](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v2.5)) Challenge: building reducers
 * ([v2.6](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v2.6)) Combining Reducers
 * ([v3.1](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v3.1)) Creating a Store
-* (v3.2) Subscribing to the Store
+* ([v3.2](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v3.2)) Subscribing to the Store
 * (v3.3) Unsubscribing from the Store
 * (v3.4) Creating Middleware
 

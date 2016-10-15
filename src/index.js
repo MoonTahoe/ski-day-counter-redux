@@ -5,18 +5,23 @@ import initialState from './initialState.json'
 
 const store = createStore(reducers, initialState)
 
-console.log(`
+const printGoal = () =>
+    console.log(`   Goal: ${store.getState().goal}`)
 
+const countResorts = () =>
+    console.log(`   Resort Count: ${store.getState().allSkiDays.length}`)
 
-    Initial State
-    =============
-    goal: ${store.getState().goal}
-    resorts: ${store.getState().allSkiDays.map(({resort})=>resort).join(', ')}
-    cache: ${JSON.stringify(store.getState().resortNames.cache)}
+const stringifyCache = () =>
+    console.log(`   ${JSON.stringify(store.getState().resortNames.cache)}`)
 
+const printMargins = () =>
+    console.log('\n')
 
-
-`)
+store.subscribe(printMargins)
+store.subscribe(printGoal)
+store.subscribe(countResorts)
+store.subscribe(stringifyCache)
+store.subscribe(printMargins)
 
 store.dispatch({
     type: C.SET_GOAL,
@@ -34,6 +39,10 @@ store.dispatch({
 })
 
 store.dispatch({
+    type: C.FETCH_RESORT_NAMES
+})
+
+store.dispatch({
     type: C.CACHE_RESORT_NAMES,
     payload: {
         letter: 'h',
@@ -41,15 +50,7 @@ store.dispatch({
     }
 })
 
-console.log(`
-
-
-    Current State
-    =============
-    goal: ${store.getState().goal}
-    resorts: ${store.getState().allSkiDays.map(({resort})=>resort).join(', ')}
-    cache: ${JSON.stringify(store.getState().resortNames.cache)}
-
-
-
-`)
+store.dispatch({
+    type: C.REMOVE_DAY,
+    payload: "2016-10-28"
+})
