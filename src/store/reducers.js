@@ -70,3 +70,49 @@ export const errors = (state = [], action) => {
     }
 
 }
+
+export const suggestions = (state = [], action) => {
+
+    switch (action.type) {
+
+        case C.CLEAR_SUGGESTIONS :
+            return []
+
+        case C.CHANGE_SUGGESTIONS :
+            return action.payload
+
+        default :
+            return state
+    }
+
+}
+
+export const fetching = (state, action) => {
+
+    switch (action.type) {
+
+        case C.FETCH_RESORT_NAMES :
+            return true
+
+        default :
+            return false
+    }
+
+}
+
+export const cache = (state = {}, action) => {
+
+    switch (action.type) {
+
+        case C.CACHE_RESORT_NAMES :
+            return {
+                ...state,
+                [action.payload.letter]: action.payload.results
+            }
+
+        default :
+            return state
+    }
+
+}
+

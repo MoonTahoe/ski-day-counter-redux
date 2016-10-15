@@ -1,10 +1,14 @@
 {
   "name": "ski-day-counter-redux",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "A redux version of Eve Porcello's ski day counter.",
   "main": "./dist",
   "scripts": {
-    "test": "echo 'todo: setup JEST testing'"
+    "challenge-a": "babel-node ./src/challenges/CLEAR_SUGGESTIONS.js",
+    "challenge-b": "babel-node ./src/challenges/CHANGE_SUGGESTIONS.js",
+    "challenge-c": "babel-node ./src/challenges/FETCH_RESORT_NAMES.js",
+    "challenge-d": "babel-node ./src/challenges/CANCEL_FETCHING.js",
+    "challenge-e": "babel-node ./src/challenges/CACHE_RESORT_NAMES.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +34,7 @@
   "devDependencies": {
     "babel-cli": "^6.16.0",
     "babel-preset-es2015": "^6.16.0",
-    "babel-preset-stage-0": "^6.16.0"
+    "babel-preset-stage-0": "^6.16.0",
+    "expect": "^1.20.2"
   }
 }
