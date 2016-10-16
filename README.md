@@ -17,7 +17,7 @@ Versions
 * ([v3.1](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v3.1)) Creating a Store
 * ([v3.2](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v3.2)) Subscribing to the Store
 * ([v3.3](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v3.3)) Unsubscribing from the Store
-* (v3.4) Creating Middleware
+* ([v3.4](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v3.4)) Creating Middleware
 
 * (v4.1) Creating a static build with webpack
 * (v4.2) What are Action Creators

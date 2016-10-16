@@ -1,25 +1,48 @@
 import C from './constants'
-import reducers from './store/reducers'
-import { createStore } from 'redux'
-import initialState from './initialState.json'
+import storeFactory from './store'
 
-const store = createStore(reducers, initialState)
+const store = storeFactory({
+    allSkiDays: [
+        {
+            "resort": "Homewood",
+            "date": "2016-2-21",
+            "powder": false,
+            "backcountry": false
+        }
+    ]
+})
 
-const unsubscribe = store.subscribe(() =>
-    console.log(`   Goal: ${store.getState().goal}`)
-)
+store.dispatch({
+    type: C.ADD_DAY,
+    payload: {
+        "resort": "Mt Shasta",
+        "date": "2016-10-28",
+        "powder": true,
+        "backcountry": true
+    }
+})
 
-setInterval(() => {
+store.dispatch({
+    type: C.ADD_DAY,
+    payload: {
+        "resort": "Squaw Valley",
+        "date": "2016-3-28",
+        "powder": true,
+        "backcountry": false
+    }
+})
 
-    store.dispatch({
-        type: C.SET_GOAL,
-        payload: Math.floor(Math.random() * 100)
-    })
+store.dispatch({
+    type: C.ADD_DAY,
+    payload: {
+        "resort": "The Canyons",
+        "date": "2016-1-2",
+        "powder": false,
+        "backcountry": false
+    }
+})
 
-
-}, 250)
-
-setTimeout(() => {
-    unsubscribe()
-    process.exit()
-}, 3000)
+store.dispatch({
+    type: C.REMOVE_DAY,
+    payload: "2016-1-2"
+})
