@@ -21,8 +21,9 @@ Versions
 * ([v4.1](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v4.1)) Creating a static build with webpack
 * ([v4.2](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v4.2)) What are Action Creators
 * ([v4.3](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v4.3)) Using the Server
-* ([v4.4](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v4.4)) Async Actions with redux-thunk
-* (v4.5) Autocomplete thunk
+* ([v4.4](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v4.4)) Challenge: building action creators
+* (v4.5) Async Actions with redux-thunk
+* (v4.6) Suggest Resort Names thunk
 
 * (v5.1) Explicitly Passing the store
 * (v5.2) Installing React Redux
@@ -38,3 +39,4 @@ Later Changes
 * Move fs to dispatch lesson, keep logs browser friendly
 * Use babel-latest
 * Use pure css over scss
+* Add fetch and cancel fetch action creators to v4.4

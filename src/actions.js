@@ -31,23 +31,13 @@ export const clearError = (index) =>
         payload: index
     })
 
-export const randomGoals = (time = 3000) => dispatch => {
-
-    dispatch({
-        type: C.FETCH_RESORT_NAMES
+export const clearSuggestions = () =>
+    ({
+        type: C.CLEAR_SUGGESTIONS
     })
 
-    let i = setInterval(() => dispatch(
-        setGoal(
-            Math.floor(Math.random() * 100)
-        )
-    ), 500)
-
-    setTimeout(() => {
-        clearInterval(i)
-        dispatch({
-            type: C.CANCEL_FETCHING
-        })
-    }, time)
-
-}
+export const changeSuggestions = (suggestions) =>
+    ({
+        type: C.CHANGE_SUGGESTIONS,
+        payload: suggestions
+    })
