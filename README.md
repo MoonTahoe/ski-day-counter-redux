@@ -41,4 +41,5 @@ Later Changes
 * Use pure css over scss
 * Add fetch and cancel fetch action creators to v4.4
 * Maybe use isomorphic-fetch in an earlier sample???
-* NEW:: Action SET_QUERY
+* Simplified autocomplete and changed fetching!!!
+

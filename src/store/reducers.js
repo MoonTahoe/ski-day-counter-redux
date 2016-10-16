@@ -88,43 +88,20 @@ export const suggestions = (state = [], action) => {
 
 }
 
-export const fetching = (state, action) => {
+export const fetching = (state=false, action) => {
 
     switch (action.type) {
 
         case C.FETCH_RESORT_NAMES :
             return true
 
-        default :
+        case C.CHANGE_SUGGESTIONS :
             return false
-    }
 
-}
-
-export const cache = (state = {}, action) => {
-
-    switch (action.type) {
-
-        case C.CACHE_RESORT_NAMES :
-            return {
-                ...state,
-                [action.payload.letter]: action.payload.results
-            }
+        case C.CANCEL_FETCHING :
+            return false
 
         default :
-            return state
-    }
-
-}
-
-export const query = (state="", action) => {
-
-    switch (action.type) {
-
-        case C.SET_QUERY:
-            return action.payload
-
-        default:
             return state
     }
 
@@ -136,8 +113,6 @@ export default combineReducers({
     errors,
     resortNames: combineReducers({
         fetching,
-        query,
-        cache,
         suggestions
     })
 })

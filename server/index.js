@@ -26,6 +26,4 @@ const app = express()
         )
     )
 
-app.listen(port, () => console.log(
-    'Ski resort app running on port ' + port + ' with a delay of ' + delay
-))
+app.listen(port, () => console.log('Ski resort app running on port ' + port + ' with a ' + delay/1000 + ' second delay'))

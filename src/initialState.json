@@ -22,8 +22,7 @@
   "goal": 10,
   "errors": [],
   "resortNames": {
-    "cache": {},
-    "suggestions": [],
-    "fetching": false
+    "fetching": false,
+    "suggestions": []
   }
 }
