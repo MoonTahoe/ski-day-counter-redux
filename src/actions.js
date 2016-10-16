@@ -1,4 +1,5 @@
 import C from './constants'
+import { compose } from 'redux'
 
 export const addDay = (resort, date, powder = false, backcountry = false) =>
     ({
@@ -29,3 +30,24 @@ export const clearError = (index) =>
         type: C.CLEAR_ERROR,
         payload: index
     })
+
+export const randomGoals = (time = 3000) => dispatch => {
+
+    dispatch({
+        type: C.FETCH_RESORT_NAMES
+    })
+
+    let i = setInterval(() => dispatch(
+        setGoal(
+            Math.floor(Math.random() * 100)
+        )
+    ), 500)
+
+    setTimeout(() => {
+        clearInterval(i)
+        dispatch({
+            type: C.CANCEL_FETCHING
+        })
+    }, time)
+
+}
