@@ -1,11 +1,12 @@
 {
   "name": "ski-day-counter-redux",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "A redux version of Eve Porcello's ski day counter.",
   "main": "./dist",
   "scripts": {
     "build": "./node_modules/.bin/webpack --progress",
-    "dev": "./node_modules/.bin/webpack-dev-server"
+    "dev": "./node_modules/.bin/webpack-dev-server",
+    "start": "./node_modules/.bin/babel-node ./server --port 3333 --delay 500"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,9 @@
   },
   "homepage": "https://github.com/MoonTahoe/ski-day-counter-redux#readme",
   "dependencies": {
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "minimist": "^1.2.0",
     "react": "^15.3.2",
     "redux": "^3.6.0"
   },
