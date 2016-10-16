@@ -117,12 +117,26 @@ export const cache = (state = {}, action) => {
 
 }
 
+export const query = (state="", action) => {
+
+    switch (action.type) {
+
+        case C.SET_QUERY:
+            return action.payload
+
+        default:
+            return state
+    }
+
+}
+
 export default combineReducers({
     allSkiDays,
     goal,
     errors,
     resortNames: combineReducers({
         fetching,
+        query,
         cache,
         suggestions
     })

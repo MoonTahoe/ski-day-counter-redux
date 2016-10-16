@@ -23,7 +23,7 @@ Versions
 * ([v4.3](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v4.3)) Using the Server
 * ([v4.4](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v4.4)) Challenge: building action creators
 * ([v4.5](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v4.5)) Async Actions with redux-thunk
-* (v4.6) Suggest Resort Names thunk
+* ([v4.6](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v4.6)) Suggest Resort Names thunk
 
 * (v5.1) Explicitly Passing the store
 * (v5.2) Installing React Redux
@@ -40,3 +40,5 @@ Later Changes
 * Use babel-latest
 * Use pure css over scss
 * Add fetch and cancel fetch action creators to v4.4
+* Maybe use isomorphic-fetch in an earlier sample???
+* NEW:: Action SET_QUERY

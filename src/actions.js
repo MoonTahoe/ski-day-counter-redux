@@ -1,5 +1,6 @@
 import C from './constants'
 import { compose } from 'redux'
+import fetch from 'isomorphic-fetch'
 
 export const addDay = (resort, date, powder = false, backcountry = false) =>
     ({
@@ -42,23 +43,62 @@ export const changeSuggestions = (suggestions) =>
         payload: suggestions
     })
 
-export const randomGoals = (time = 3000) => dispatch => {
-
-    dispatch({
-        type: C.FETCH_RESORT_NAMES
+export const setQuery = value =>
+    ({
+        type: C.SET_QUERY,
+        payload: value
     })
 
-    let i = setInterval(() => dispatch(
-        setGoal(
-            Math.floor(Math.random() * 100)
-        )
-    ), 500)
+const filterCache = (cache, query) => {
 
-    setTimeout(() => {
-        clearInterval(i)
-        dispatch({
-            type: C.CANCEL_FETCHING
-        })
-    }, time)
+    const letter = query[0].toLowerCase()
+
+    return cache[letter].filter(
+        term => query.toLowerCase() === term.substr(0, query.length).toLowerCase()
+    )
+
+}
+
+export const suggestResortName = (value = "") => (dispatch, getState) => {
+
+    const { fetching, cache } = getState().resortNames
+    let letter
+
+    dispatch(setQuery(value))
+
+    if (value.length && !fetching) {
+
+        letter = value[0]
+
+        if (Object.keys(cache).some(key=>key === letter)) {
+            dispatch(
+                changeSuggestions(
+                    filterCache(cache, letter)
+                )
+            )
+        } else {
+            dispatch({type: C.FETCH_RESORT_NAMES})
+            fetch('http://localhost:3333/resorts/' + letter)
+                .then(response => response.json())
+                .then(results => dispatch({
+                    type: C.CACHE_RESORT_NAMES,
+                    payload: {letter, results}
+                }))
+                .then(() => dispatch(
+                    changeSuggestions(
+                        filterCache(
+                            getState().resortNames.cache,
+                            getState().resortNames.query
+                        )
+                    )
+                ))
+                .catch(({message}) => dispatch(addError(`could not fetch suggestions: ${message}`)))
+        }
+
+    } else {
+        dispatch(
+            clearSuggestions()
+        )
+    }
 
 }
