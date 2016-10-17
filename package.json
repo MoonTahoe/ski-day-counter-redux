@@ -1,6 +1,6 @@
 {
   "name": "ski-day-counter-redux",
-  "version": "0.4.6",
+  "version": "0.5.0",
   "description": "A redux version of Eve Porcello's ski day counter.",
   "main": "./dist",
   "scripts": {
@@ -31,8 +31,12 @@
     "express": "^4.14.0",
     "isomorphic-fetch": "^2.2.1",
     "minimist": "^1.2.0",
+    "ramda": "^0.22.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-icons": "^2.2.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0"
   },

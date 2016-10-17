@@ -14,6 +14,7 @@ const logger = (req, res, next) => {
 const app = express()
     .use(logger)
     .use(cors())
+    .use('/', express.static('./dist/img'))
     .get('/resorts', (req, res) =>
         res.status(200).json(resorts)
     )

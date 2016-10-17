@@ -24,13 +24,7 @@ Versions
 * ([v4.4](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v4.4)) Challenge: building action creators
 * ([v4.5](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v4.5)) Async Actions with redux-thunk
 * ([v4.6](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v4.6)) Suggest Resort Names thunk
-
-* (v5.1) Explicitly Passing the store
-* (v5.2) Installing React Redux
-* (v5.3) The Provider
-* (v5.4) Container vs Presentational Components
-* (v5.5) Mapping state to props with connect()
-* (v5.6) Mapping dispatch to props with connect()
+* ([v5.1](https://github.com/MoonTahoe/ski-day-counter-redux/tree/v5.0)) React/Redux
 
 Later Changes
 ------------
@@ -42,4 +36,4 @@ Later Changes
 * Add fetch and cancel fetch action creators to v4.4
 * Maybe use isomorphic-fetch in an earlier sample???
 * Simplified autocomplete and changed fetching!!!
-
+* host image online somewhere (MoonHighway facebook???)
