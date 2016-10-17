@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import { GoalProgress, SkiDayCount } from './ui'
-import { setGoal } from '../actions'
+import { GoalProgress, SkiDayCount, SkiDayList, ShowErrors, AddDayForm } from './ui'
+import { setGoal, addError, clearError, addDay, suggestResortName, clearSuggestions } from '../actions'
 
 export const CountDays = connect(
     ({ allSkiDays }) =>
@@ -12,18 +12,41 @@ export const CountDays = connect(
         })
 )(SkiDayCount)
 
-export const AddDay = () =>
-    <div className="add-days">
-        <h1>Add Days</h1>
-    </div>
+export const AddDay = connect(
+    state => ({
+        suggestions: state.resortNames.suggestions
+    }),
+    dispatch => ({
+        onNewDay({resort, date, powder, backcountry}) {
+            dispatch(
+                addDay(resort, date, powder, backcountry)
+            )
+        },
+        onChange(value) {
+            if (value) {
+                dispatch(
+                    suggestResortName(value)
+                )
+            } else {
+                dispatch(
+                    clearSuggestions()
+                )
+            }
+        },
+        onClear() {
+            dispatch(
+                clearSuggestions()
+            )
+        }
+    })
+)(AddDayForm)
 
-export const AllDays = ({ params }) =>
-    <div className="all-days">
-        <h1>All Days : {params.filter}</h1>
-        <Link to="/list-days">All</Link>
-        <Link to="/list-days/powder">Powder</Link>
-        <Link to="/list-days/backcountry">Backcountry</Link>
-    </div>
+export const AllDays = connect(
+    ({allSkiDays}, { params }) => ({
+        days: allSkiDays,
+        filter: params.filter
+    })
+)(SkiDayList)
 
 export const Goal = connect(
     state =>
@@ -39,3 +62,11 @@ export const Goal = connect(
         })
 )(GoalProgress)
 
+export const Errors = connect(
+    ({errors}) => ({errors}),
+    dispatch => ({
+        onClearError(index) {
+            dispatch(clearError(index))
+        }
+    })
+)(ShowErrors)

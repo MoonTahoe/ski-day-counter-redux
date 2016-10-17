@@ -112,3 +112,111 @@ div.ski-day-count {
 
 
 }
+
+div.ski-day-list {
+
+  height: calc(100% - 13em);
+  overflow-y: scroll;
+
+  table {
+    width: 100%;
+    background-color: rgba(255,255,255, .9);
+    font-family: verdana, sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+
+    td {
+      padding: .2em;
+    }
+
+    a {
+      margin: 15px;
+    }
+  }
+}
+
+div.show-errors {
+
+  width: 100%;
+
+  div {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 0;
+    background-color: red;
+    color: white;
+    font-family: verdana, sans-serif;
+    display: flex;
+    justify-content: space-between;
+
+    svg {
+      font-size: 2em;
+      position: relative;
+      top: 9px;
+      right: 9px;
+    }
+  }
+}
+
+form.add-day {
+  font-family: Verdana, sans-serif;
+  width: 70%;
+  margin-left: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+  height: calc(100% - 12em);
+
+  >label,
+  div {
+    margin: 1em 0;
+
+  }
+
+  label {
+    font-size: 1.5em;
+    text-shadow: 3px 3px 10px $snow-white;
+    height: 10px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="date"] {
+    font-size: 1.5em;
+    padding: .25em;
+    border-radius: .2em;
+    outline: none;
+    min-height: 36px;
+  }
+
+  input[type="checkbox"] {
+    transform: scale(2);
+    margin: 0;
+    padding: 0;
+    margin-right: 2em;
+  }
+
+  div>label {
+    position: relative;
+    top: 2px;
+  }
+
+  .autocomplete {
+    input {
+      width: calc(100% - .75em);
+    }
+  }
+
+  button {
+    margin: auto;
+    width: 100%;
+    font-size: 2em;
+    background-color: #8a2a2d;
+    font-weight: bold;
+    color: $snow-white;
+    padding: 5px;
+  }
+
+}

@@ -6,11 +6,20 @@ const consoleMessages = store => next => action => {
 
     let result
 
-    console.log("")
-    console.log(`dispatching action => ${action.type}`)
+    console.groupCollapsed(`dispatching action => ${action.type}`)
     result = next(action)
-    console.log('next state', store.getState())
-    console.log("")
+
+    let { allSkiDays, goal, errors, resortNames } = store.getState()
+
+    console.log(`
+        ski days: ${allSkiDays.length}
+        goal: ${goal}
+        fetching: ${resortNames.fetching}
+        suggestions: ${resortNames.suggestions}
+        errors: ${errors.length}
+    `)
+
+    console.groupEnd()
 
     return result
 

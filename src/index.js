@@ -5,10 +5,23 @@ import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import { App, Whoops404 } from './components'
 import { CountDays, AddDay, AllDays} from './components/containers'
+import { addError } from './actions'
 import storeFactory from './store'
-import initialState from './initialState.json'
 
-const store = storeFactory(initialState)
+const store = storeFactory(
+    (localStorage["redux-store"]) ?
+        JSON.parse(localStorage["redux-store"]) :
+    {}
+)
+
+store.subscribe(() => {
+    localStorage["redux-store"] = JSON.stringify(store.getState())
+})
+
+window.addEventListener(
+    "error",
+    ({message}) => store.dispatch(addError(message))
+)
 
 window.React = React
 window.store = store
@@ -17,12 +30,12 @@ render(
     <Provider store={store}>
         <Router history={hashHistory}>
             <Route path="/" component={App}>
-                <IndexRoute component={CountDays} />
-                <Route path="add-day" component={AddDay} />
+                <IndexRoute component={CountDays}/>
+                <Route path="add-day" component={AddDay}/>
                 <Route path="list-days" component={AllDays}>
-                    <Route path=":filter" component={AllDays} />
+                    <Route path=":filter" component={AllDays}/>
                 </Route>
-                <Route path="*" component={Whoops404} />
+                <Route path="*" component={Whoops404}/>
             </Route>
         </Router>
     </Provider>,

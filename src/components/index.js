@@ -1,9 +1,10 @@
 import { Menu } from './ui'
-import { Goal } from './containers'
+import { Goal, Errors } from './containers'
 import '../stylesheets/index.scss'
 
 export const App = ({children}) =>
     <div className="app">
+        <Errors />
         {children}
         <Goal />
         <Menu />
