@@ -204,8 +204,33 @@ form.add-day {
   }
 
   .autocomplete {
+    position: relative;
     input {
       width: calc(100% - .75em);
+    }
+    .suggestions {
+      position: absolute;
+      top: 2em;
+      left: 0;
+      width: auto;
+      height: auto;
+      max-height: 200px;
+      background-color: white;
+      overflow-y: scroll;
+      z-index: 3;
+
+      p {
+        padding: 1em;
+        margin: 0;
+
+        &:hover {
+          background-color: yellow;
+        }
+      }
+
+      &:empty {
+        display: none;
+      }
     }
   }
 
@@ -218,5 +243,7 @@ form.add-day {
     color: $snow-white;
     padding: 5px;
   }
+
+
 
 }

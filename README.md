@@ -37,3 +37,4 @@ Later Changes
 * Maybe use isomorphic-fetch in an earlier sample???
 * Simplified autocomplete and changed fetching!!!
 * host image online somewhere (MoonHighway facebook???)
+* Style Changes for Eve
