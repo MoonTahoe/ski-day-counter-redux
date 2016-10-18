@@ -8,6 +8,8 @@ import Terrain from 'react-icons/lib/md/terrain'
 import SnowFlake from 'react-icons/lib/ti/weather-snow'
 import Calendar from 'react-icons/lib/fa/calendar'
 import CloseButton from 'react-icons/lib/fa/close'
+import Downloading from 'react-icons/lib/fa/cloud-download'
+
 import '../stylesheets/ui.scss'
 
 export const Menu = () =>
@@ -73,8 +75,8 @@ SkiDayCount.propTypes = {
     backcountry: PropTypes.number
 }
 
-const SkiDayRow = ({ resort, date, powder, backcountry }) =>
-    <tr>
+const SkiDayRow = ({ resort, date, powder, backcountry, onRemoveDay=f=>f }) =>
+    <tr onDoubleClick={() => onRemoveDay(date)}>
         <td>
             {date}
         </td>
@@ -93,10 +95,11 @@ SkiDayRow.propTypes = {
     resort: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     powder: PropTypes.bool,
-    backcountry: PropTypes.bool
+    backcountry: PropTypes.bool,
+    onRemoveDay: PropTypes.func
 }
 
-export const SkiDayList = ({ days, filter }) => {
+export const SkiDayList = ({ days, filter, onRemoveDay=f=>f }) => {
 
     const filteredDays = (!filter || !filter.match(/powder|backcountry/)) ?
         days :
@@ -110,6 +113,7 @@ export const SkiDayList = ({ days, filter }) => {
     return (
         <div className="ski-day-list">
             <table>
+                <caption>double click to remove</caption>
                 <thead>
                 <tr>
                     <th>Date</th>
@@ -127,7 +131,7 @@ export const SkiDayList = ({ days, filter }) => {
                 </thead>
                 <tbody>
                 {filteredDays.map((day, i) =>
-                    <SkiDayRow key={i} {...day} />
+                    <SkiDayRow key={i} {...day} onRemoveDay={onRemoveDay} />
                 )}
                 </tbody>
             </table>
@@ -137,6 +141,7 @@ export const SkiDayList = ({ days, filter }) => {
 
 SkiDayList.propTypes = {
     filter: PropTypes.oneOf(['powder', 'backcountry']),
+    onRemoveDay: PropTypes.func,
     days: (props) => (!Array.isArray(props.days)) ?
         new Error("SkiDayList days property must be an array") :
         (!props.days.length) ?
@@ -174,7 +179,7 @@ class Autocomplete extends Component {
 
     render() {
 
-        const { suggestions=[], onChange=f=>f, onClear=f=>f } = this.props
+        const { suggestions=[], onChange=f=>f, onClear=f=>f, fetching=false } = this.props
 
         return (
             <div className="autocomplete">
@@ -186,6 +191,8 @@ class Autocomplete extends Component {
                        onFocus={onChange}
                        onBlur={() => setTimeout(onClear, 250)}
                 />
+
+                <span>{(fetching) ? <Downloading /> : null }</span>
 
                 <div className="suggestions">
                     {suggestions.map((item, i) =>
@@ -202,7 +209,7 @@ class Autocomplete extends Component {
 
 }
 
-export const AddDayForm = withRouter(({ suggestions=[], onNewDay=f=>f, onChange=f=>f, onClear=f=>f, router}) => {
+export const AddDayForm = withRouter(({ suggestions=[], onNewDay=f=>f, onChange=f=>f, onClear=f=>f, fetching=false, router}) => {
 
     let _resort, _date, _powder, _backcountry
 
@@ -237,6 +244,7 @@ export const AddDayForm = withRouter(({ suggestions=[], onNewDay=f=>f, onChange=
             <Autocomplete ref={input => _resort = input}
                           suggestions={suggestions}
                           onChange={() => onChange(_resort.value)}
+                          fetching={fetching}
                           onClear={onClear}
             />
 

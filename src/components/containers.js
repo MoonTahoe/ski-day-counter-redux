@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { GoalProgress, SkiDayCount, SkiDayList, ShowErrors, AddDayForm } from './ui'
-import { setGoal, addError, clearError, addDay, suggestResortName, clearSuggestions } from '../actions'
+import { setGoal, addError, clearError, addDay, removeDay, suggestResortName, clearSuggestions } from '../actions'
 
 export const CountDays = connect(
     ({ allSkiDays }) =>
@@ -14,7 +14,8 @@ export const CountDays = connect(
 
 export const AddDay = connect(
     state => ({
-        suggestions: state.resortNames.suggestions
+        suggestions: state.resortNames.suggestions,
+        fetching: state.resortNames.fetching
     }),
     dispatch => ({
         onNewDay({resort, date, powder, backcountry}) {
@@ -45,7 +46,13 @@ export const AllDays = connect(
     ({allSkiDays}, { params }) => ({
         days: allSkiDays,
         filter: params.filter
-    })
+    }),
+    dispatch =>
+        ({
+            onRemoveDay(date) {
+                dispatch(removeDay(date))
+            }
+        })
 )(SkiDayList)
 
 export const Goal = connect(
