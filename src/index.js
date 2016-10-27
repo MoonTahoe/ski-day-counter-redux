@@ -4,7 +4,9 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import { App, Whoops404 } from './components'
-import { CountDays, AddDay, AllDays} from './components/containers'
+import SkiDayCount from './components/SkiDayCount'
+import AddDayForm from './components/AddDayForm'
+import SkiDayList from './components/SkiDayList'
 import { addError } from './actions'
 import storeFactory from './store'
 
@@ -30,10 +32,10 @@ render(
     <Provider store={store}>
         <Router history={hashHistory}>
             <Route path="/" component={App}>
-                <IndexRoute component={CountDays}/>
-                <Route path="add-day" component={AddDay}/>
-                <Route path="list-days" component={AllDays}>
-                    <Route path=":filter" component={AllDays}/>
+                <IndexRoute component={SkiDayCount}/>
+                <Route path="add-day" component={AddDayForm}/>
+                <Route path="list-days" component={SkiDayList}>
+                    <Route path=":filter" component={SkiDayList}/>
                 </Route>
                 <Route path="*" component={Whoops404}/>
             </Route>

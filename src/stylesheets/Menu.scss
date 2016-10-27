@@ -1,0 +1,17 @@
+@import "globals";
+
+nav.menu {
+  background-color: black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 1em);
+  font-size: 4em;
+  padding: .5em;
+  display: flex;
+  justify-content: space-around;
+
+  a {
+    color: $snow-white;
+  }
+}

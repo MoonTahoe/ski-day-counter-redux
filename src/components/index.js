@@ -1,12 +1,13 @@
-import { Menu } from './ui'
-import { Goal, Errors } from './containers'
+import Menu from './Menu'
+import ShowErrors from './ShowErrors'
+import GoalProgress from './GoalProgress'
 import '../stylesheets/index.scss'
 
 export const App = ({children}) =>
     <div className="app">
-        <Errors />
+        <ShowErrors />
         {children}
-        <Goal />
+        <GoalProgress />
         <Menu />
     </div>
 

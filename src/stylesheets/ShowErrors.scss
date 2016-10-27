@@ -1,0 +1,25 @@
+@import "globals";
+
+div.show-errors {
+
+  width: 100%;
+
+  div {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 0;
+    background-color: red;
+    color: white;
+    font-family: verdana, sans-serif;
+    display: flex;
+    justify-content: space-between;
+
+    svg {
+      font-size: 2em;
+      position: relative;
+      top: 9px;
+      right: 9px;
+    }
+  }
+}
