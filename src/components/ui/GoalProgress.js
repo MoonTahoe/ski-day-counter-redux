@@ -1,7 +1,5 @@
 import { PropTypes } from 'react'
-import { connect } from 'react-redux'
-import '../stylesheets/GoalProgress.scss'
-import { setGoal } from '../actions'
+import '../../stylesheets/GoalProgress.scss'
 
 const GoalProgress = ({current, goal=10, onNewGoal=f=>f}) => {
 
@@ -28,16 +26,4 @@ GoalProgress.propTypes = {
     onNewGoal: PropTypes.func
 }
 
-export default connect(
-    state =>
-        ({
-            current: state.allSkiDays.length,
-            goal: state.goal
-        }),
-    dispatch =>
-        ({
-            onNewGoal(goal) {
-                dispatch(setGoal(goal))
-            }
-        })
-)(GoalProgress)
+export default GoalProgress

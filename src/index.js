@@ -1,25 +1,21 @@
 import C from './constants'
 import React from 'react'
 import { render } from 'react-dom'
+import routes from './routes'
+import sampleData from './initialState'
 import { Provider } from 'react-redux'
-import { Router, Route, IndexRoute, hashHistory } from 'react-router'
-import { App, Whoops404 } from './components'
-import SkiDayCount from './components/SkiDayCount'
-import AddDayForm from './components/AddDayForm'
-import SkiDayList from './components/SkiDayList'
-import actions from './actions'
 import { addError } from './actions'
 import storeFactory from './store'
 
-const store = storeFactory(
-    (localStorage["redux-store"]) ?
-        JSON.parse(localStorage["redux-store"]) :
-    {}
-)
+const initialState = (localStorage["redux-store"]) ?
+    JSON.parse(localStorage["redux-store"]) :
+    sampleData
 
-store.subscribe(() => {
+const saveState = () => 
     localStorage["redux-store"] = JSON.stringify(store.getState())
-})
+
+const store = storeFactory(initialState)
+store.subscribe(saveState)
 
 window.addEventListener(
     "error",
@@ -28,20 +24,10 @@ window.addEventListener(
 
 window.React = React
 window.store = store
-window.addError = addError
 
 render(
     <Provider store={store}>
-        <Router history={hashHistory}>
-            <Route path="/" component={App}>
-                <IndexRoute component={SkiDayCount}/>
-                <Route path="add-day" component={AddDayForm}/>
-                <Route path="list-days" component={SkiDayList}>
-                    <Route path=":filter" component={SkiDayList}/>
-                </Route>
-                <Route path="*" component={Whoops404}/>
-            </Route>
-        </Router>
+        {routes}
     </Provider>,
     document.getElementById('react-container')
 )

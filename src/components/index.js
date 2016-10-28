@@ -1,6 +1,6 @@
-import Menu from './Menu'
-import ShowErrors from './ShowErrors'
-import GoalProgress from './GoalProgress'
+import Menu from './ui/Menu'
+import ShowErrors from './containers/ShowErrors'
+import GoalProgress from './containers/GoalProgress'
 import '../stylesheets/index.scss'
 
 export const App = ({children}) =>

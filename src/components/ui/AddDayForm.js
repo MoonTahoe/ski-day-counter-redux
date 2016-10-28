@@ -1,11 +1,9 @@
 import { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Autocomplete from './Autocomplete'
-import { withRouter } from 'react-router'
-import { addDay, suggestResortName, clearSuggestions } from '../actions'
-import '../stylesheets/AddDayForm.scss'
+import '../../stylesheets/AddDayForm.scss'
 
-export const AddDayForm = ({ suggestions=[], onNewDay=f=>f, onChange=f=>f, onClear=f=>f, fetching=false, router}) => {
+const AddDayForm = ({ suggestions=[], onNewDay=f=>f, onChange=f=>f, onClear=f=>f, fetching=false, router}) => {
 
     let _resort, _date, _powder, _backcountry
 
@@ -78,35 +76,4 @@ AddDayForm.propTypes = {
     router: PropTypes.object
 }
 
-export default withRouter(
-    connect(
-        (state, {router}) => ({
-            suggestions: state.resortNames.suggestions,
-            fetching: state.resortNames.fetching,
-            router
-        }),
-        dispatch => ({
-            onNewDay({resort, date, powder, backcountry}) {
-                dispatch(
-                    addDay(resort, date, powder, backcountry)
-                )
-            },
-            onChange(value) {
-                if (value) {
-                    dispatch(
-                        suggestResortName(value)
-                    )
-                } else {
-                    dispatch(
-                        clearSuggestions()
-                    )
-                }
-            },
-            onClear() {
-                dispatch(
-                    clearSuggestions()
-                )
-            }
-        })
-    )(AddDayForm)
-)
+export default AddDayForm

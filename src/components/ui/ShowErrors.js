@@ -1,8 +1,6 @@
 import { PropTypes } from 'react'
-import { connect } from 'react-redux'
 import CloseButton from 'react-icons/lib/fa/close'
-import '../stylesheets/ShowErrors.scss'
-import { clearError } from '../actions'
+import '../../stylesheets/ShowErrors.scss'
 
 const ShowErrors = ({ errors=[], onClearError=f=>f }) =>
     <div className="show-errors">
@@ -22,11 +20,4 @@ ShowErrors.propTypes = {
     onClearError: PropTypes.func
 }
 
-export default connect(
-    ({errors}) => ({errors}),
-    dispatch => ({
-        onClearError(index) {
-            dispatch(clearError(index))
-        }
-    })
-)(ShowErrors)
+export default ShowErrors

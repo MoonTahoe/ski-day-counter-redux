@@ -1,11 +1,9 @@
 import { PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { removeDay } from '../actions'
 import { Link } from 'react-router'
 import SkiDayRow from './SkiDayRow'
 import Terrain from 'react-icons/lib/md/terrain'
 import SnowFlake from 'react-icons/lib/ti/weather-snow'
-import '../stylesheets/SkiDayList.scss'
+import '../../stylesheets/SkiDayList.scss'
 
 const SkiDayList = ({ days, filter, onRemoveDay=f=>f }) => {
 
@@ -57,15 +55,4 @@ SkiDayList.propTypes = {
             null
 }
 
-export default connect(
-    ({allSkiDays}, { params }) => ({
-        days: allSkiDays,
-        filter: params.filter
-    }),
-    dispatch =>
-        ({
-            onRemoveDay(date) {
-                dispatch(removeDay(date))
-            }
-        })
-)(SkiDayList)
+export default SkiDayList

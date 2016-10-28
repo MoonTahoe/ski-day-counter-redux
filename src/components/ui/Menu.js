@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 import HomeIcon from 'react-icons/lib/fa/home'
 import AddDayIcon from 'react-icons/lib/fa/calendar-plus-o'
 import ListDaysIcon from 'react-icons/lib/fa/table'
-import '../stylesheets/Menu.scss'
+import '../../stylesheets/Menu.scss'
 
 const Menu = () =>
     <nav className="menu">
