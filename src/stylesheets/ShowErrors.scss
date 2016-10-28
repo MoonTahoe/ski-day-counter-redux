@@ -3,6 +3,7 @@
 div.show-errors {
 
   width: 100%;
+  font-size: 1.5em;
 
   div {
     position: absolute;
@@ -14,12 +15,14 @@ div.show-errors {
     font-family: verdana, sans-serif;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    p {
+       margin-left: 1em;
+    }
 
     svg {
       font-size: 2em;
-      position: relative;
-      top: 9px;
-      right: 9px;
     }
   }
 }

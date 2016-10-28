@@ -7,6 +7,7 @@ import { App, Whoops404 } from './components'
 import SkiDayCount from './components/SkiDayCount'
 import AddDayForm from './components/AddDayForm'
 import SkiDayList from './components/SkiDayList'
+import actions from './actions'
 import { addError } from './actions'
 import storeFactory from './store'
 
@@ -27,6 +28,7 @@ window.addEventListener(
 
 window.React = React
 window.store = store
+window.addError = addError
 
 render(
     <Provider store={store}>

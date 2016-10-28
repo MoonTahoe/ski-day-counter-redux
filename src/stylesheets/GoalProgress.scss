@@ -8,6 +8,7 @@ div.goal-progress {
   position: absolute;
   bottom: 3em;
   display: flex;
+  align-items: center;
   font-family: verdana;
   justify-content: space-between;
   text-shadow: 2px 2px 10px $snow-white;
@@ -16,15 +17,13 @@ div.goal-progress {
     flex-basis: 66%;
     background-color: black;
     height: .5em;
-    position: relative;
-    top: 17px;
   }
 
   input {
     background: none;
     border: none;
     position: relative;
-    width: 1.5em;
+    width: 1.7em;
     font-size: 1em;
     padding: 0;
     left: 9px;
