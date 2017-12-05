@@ -1,9 +1,10 @@
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const path = require('path');
 
 module.exports = {
     entry: "./src/index.js",
     output: {
-        path: "dist/assets",
+        path: path.resolve(__dirname, "dist/assets"),
         filename: "bundle.js",
         publicPath: "assets"
     },
@@ -17,10 +18,12 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
-                loader: ['babel'],
-                query: {
-                    presets: ['latest', 'stage-0', 'react']
-                }
+                use: {
+                  loader: 'babel-loader',
+                  options: {
+                      presets: ['env', 'stage-0', 'react']
+                  }
+                },
             },
             {
                 test: /\.json$/,
